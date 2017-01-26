@@ -1,0 +1,2 @@
+# killjoy
+Ohjelmoinnin harjoitustyö
