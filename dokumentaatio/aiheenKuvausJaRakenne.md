@@ -10,7 +10,7 @@ Laajennettavissa kivasti myös tietokantasovellukseksi, kun sen kurssin aika tul
 
 **Käyttäjät:** Alkoholin kulutuksestaan ja sen tilastoinnista innostunut henkilö, joka haluaa syventää morkkistaan seuraavana aamuna.
 
-**Käyttäjän toiminnot (suluissa toteutetaan jos jää aikaa -tyyppiset):**
+**Käyttäjän toiminnot:**
 * Syöttää laskennan kannalta relevantit taustatiedot (sukupuoli, ikä, kk-tulot tms.)
 * Syöttää alkoholin kulutukseen liittyvät tietonsa
 * Syöttää muihin kuluihin liittyvät tietonsa
