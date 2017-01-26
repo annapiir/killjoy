@@ -1,2 +1,2 @@
 # killjoy
-Ohjelmoinnin harjoitustyö
+Ohjelmoinnin harjoitustyö, kevät 2017
