@@ -18,3 +18,6 @@ Laajennettavissa kivasti myös tietokantasovellukseksi, kun sen kurssin aika tul
 * Saa kokoomatiedot illan alkoholinkulutuksesta
 * Saa palautetta siitä, menikö ilta alkoholin- ja rahankulutuksen näkökulmasta ihan putkeen 
 
+**Luokkakaavio**
+![Luokkakaavio](https://github.com/annapiir/killjoy/dokumentaatio/luokkakaavio.png)
+
