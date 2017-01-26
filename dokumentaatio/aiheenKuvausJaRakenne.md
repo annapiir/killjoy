@@ -19,5 +19,5 @@ Laajennettavissa kivasti myös tietokantasovellukseksi, kun sen kurssin aika tul
 * Saa palautetta siitä, menikö ilta alkoholin- ja rahankulutuksen näkökulmasta ihan putkeen 
 
 **Luokkakaavio**
-![Luokkakaavio](https://github.com/annapiir/killjoy/dokumentaatio/luokkakaavio.png)
+![Luokkakaavio](https://github.com/annapiir/killjoy/blob/master/dokumentaatio/luokkakaavio.png)
 
