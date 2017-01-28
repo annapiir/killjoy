@@ -8,7 +8,8 @@ Päivä | Tunnit | Kuvaus
 22.01.2017 | 3h | (Tuloksetonta) Gitin kanssa taistelua
 24.01.2017 | 1h | Aiheen selvittelyä
 25.01.2017 | 3h | Lisää aiheen selvittelyä ja tiedostojen hakemista
-26.01.2017 | 2h | Gitin kanssa taistelua, uuden aiheen ideointia
+26.01.2017 | 5h | Gitin kanssa taistelua, uuden aiheen ideointia, alkuvalmisteluja
+28.01.2017 | 2h | Ohjelmoitu tietojen sisäänlukua tekstikäyttöliittymällä ja hahmoteltu luokkia
 
 
 
