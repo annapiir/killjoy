@@ -21,7 +21,7 @@ public class Tiedonlukija {
     }
     
     
-    
+    //Luodaan käyttökerta (pitäisi ehkä siirtää luokkaan Kayttokerta)
     public Kayttokerta luoKayttokerta() {
         System.out.println("Anna juhlaillan päivämäärä (pp.kk.vvvv)");
         Kayttokerta kerta = new Kayttokerta(this.lukija.nextLine());
@@ -29,35 +29,30 @@ public class Tiedonlukija {
         return kerta;
     }
     
+    //uodaan käyttökerralle kerta-annokset (pitäisi ehkä siirtää ainakin osittain luokkaan KertaAnnos
     public KertaAnnos luoKertaAnnos(Kayttokerta kayttokerta) {
-        String nimi = null;
-        double vahvuus = 0;
-        double hinta = 0;
-        double annoskoko = 0;
-        int maara = 0;
-        
-        
+
         try {
             System.out.println("Juoman nimi:");
-            nimi = lukija.nextLine();
-            System.out.println("Juoman vahvuus (%, desimaaliluku piste erottimena):");
-            vahvuus = Double.parseDouble(lukija.nextLine());
-            System.out.println("Yhden pullon/lasillisen/tuopin hinta (euroa, desimaaliluku piste erottimena):");
-            hinta = Double.parseDouble(lukija.nextLine());
-            System.out.println("Annoskoko (l, desimaaliluku piste erottimena):");
-            annoskoko = Double.parseDouble(lukija.nextLine());
-            System.out.println("Nautittujen annosten lukumäärä (kokonaisluku");
-            maara = Integer.parseInt(lukija.nextLine());
+            String nimi = lukija.nextLine();
+            System.out.println("Juoman vahvuus (%, desimaaliluku, piste erottimena):");
+            double vahvuus = Double.parseDouble(lukija.nextLine());
+            System.out.println("Yhden hankkimasi annoksen (pullon/lasillisen/tuopin) hinta (euroa, desimaaliluku, piste erottimena):");
+            double hinta = Double.parseDouble(lukija.nextLine());
+            System.out.println("Annoskoko (pullon/lasillisen/tuopin) (l, desimaaliluku piste erottimena):");
+            double annoskoko = Double.parseDouble(lukija.nextLine());
+            System.out.println("Nautittujen annosten (pullon/lasillisen/tuopin lukumäärä (kokonaisluku)");
+            int maara = Integer.parseInt(lukija.nextLine());
             
+            return new KertaAnnos(nimi, vahvuus, hinta, annoskoko, maara); 
             
         } catch (Exception e) {
-            System.out.println("Et syöttänyt arvoja oikein, kokeilepa uudelleen");
+            System.out.println("Et syöttänyt arvoja oikein, yritä uudelleen");
+            return null;
         }
-        
-        return new KertaAnnos(nimi, vahvuus, hinta, annoskoko, maara); 
-        
     }
     
+    //Lopetusehto kerta-annosten syöttämieen
     public boolean lopeta() {
         System.out.println("Lopetetaanko alkoholien syöttäminen? L lopettaa");
         return lukija.nextLine().equals("L");

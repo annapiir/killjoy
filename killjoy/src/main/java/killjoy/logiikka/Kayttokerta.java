@@ -5,9 +5,7 @@
  */
 package killjoy.logiikka;
 
-import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Kayttokerta {
     private String pvm;
@@ -25,12 +23,29 @@ public class Kayttokerta {
     }
     
     public void lisaaKertaAnnos(KertaAnnos annos) {
-        alkoholit.add(annos);
+        if(annos != null) {
+            alkoholit.add(annos);
+        }
     }
 
     public ArrayList<KertaAnnos> getAlkoholit() {
         return alkoholit;
     }
+
+    @Override
+    public String toString() {
+        String saldo = "";
+        if(this.alkoholit.isEmpty() && this.muutKulut.isEmpty()) {
+            saldo = "ei alkoholia eikä muita kuluja";
+        } else {
+            for (KertaAnnos annos : this.alkoholit) {
+                saldo = saldo + " - " + annos.toString() + "\n";
+            }
+        }
+        
+        return "Illan " + this.pvm + " saldo:\n" + saldo;
+    }
+    
     
     
     

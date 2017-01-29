@@ -27,7 +27,7 @@ public class Main {
         System.out.println("Mitä joit?");
         
         
-        //Tulostetaan käyttökerran tiedot 
+        //Lisätään juomiset ArrayListiin (lopetusehtoa pitää vielä katsoa)
         while(true) {
             kerta.lisaaKertaAnnos(tiedonlukija.luoKertaAnnos(kerta));
             
@@ -36,11 +36,8 @@ public class Main {
             }
         }
         
-        System.out.println("Joit " + kerta.getPvm() + ":");
-        
-        for (KertaAnnos annos : kerta.getAlkoholit()) {
-            System.out.println(annos);
-        }
+        //Testataan lopputulosta tulostamalla käyttökerran tiedot 
+        System.out.println(kerta);
         
 
     }
