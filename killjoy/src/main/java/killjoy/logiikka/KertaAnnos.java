@@ -16,7 +16,7 @@ public class KertaAnnos {
 
     @Override
     public String toString() {
-        return this.alkoholi + ", hinta " + this.hinta + " e/" + this.annosKoko + "l, " + this.maara + "kpl";
+        return this.alkoholi + ", hinta " + this.hinta + "e/" + this.annosKoko + "l, " + this.maara + "kpl";
     }
     
     

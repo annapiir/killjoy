@@ -14,31 +14,29 @@ import killjoy.logiikka.KertaAnnos;
  * @author annapiir
  */
 public class Main {
+
     public static void main(String[] args) {
         //Tulostetaan tervehdys
         System.out.println("Tervetuloa KillJoy-alkoholilaskuriin!");
-        
+
         //Luodaan lukija tiedoille ja uusi käyttökerta
         Tiedonlukija tiedonlukija = new Tiedonlukija();
         Kayttokerta kerta = tiedonlukija.luoKayttokerta();
-        
-        
+
         //Luodaan lista käyttökerran juomisista
         System.out.println("Mitä joit?");
-        
-        
+
         //Lisätään juomiset ArrayListiin (lopetusehtoa pitää vielä katsoa)
-        while(true) {
+        while (true) {
             kerta.lisaaKertaAnnos(tiedonlukija.luoKertaAnnos(kerta));
-            
-            if(tiedonlukija.lopeta()) {
+
+            if (tiedonlukija.lopeta()) {
                 break;
             }
         }
-        
+
         //Testataan lopputulosta tulostamalla käyttökerran tiedot 
         System.out.println(kerta);
-        
 
     }
 }

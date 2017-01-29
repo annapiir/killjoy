@@ -40,6 +40,31 @@ public class KayttokertaTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-     @Test
-     public void hello() {}
+     
+    @Test
+    public void konstruktoriAsettaaPvmnOikein() {
+        Kayttokerta kerta = new Kayttokerta("24.01.2017");
+        String vastaus = kerta.toString();
+         
+        assertEquals("Illan 24.01.2017 saldo:\nei alkoholia eikä muita kuluja", vastaus);
+    }
+     
+    @Test 
+    public void lisaaKertaAnnosEiLisaaTyhjaa() {
+        Kayttokerta kerta = new Kayttokerta("24.01.2017");
+        kerta.lisaaKertaAnnos(null);
+        String vastaus = kerta.toString();
+       
+        assertEquals("Illan 24.01.2017 saldo:\nei alkoholia eikä muita kuluja", vastaus);
+    }
+    
+    @Test 
+    public void lisaaKertaAnnosLisaaAnnoksenListaan() {
+        Kayttokerta kerta = new Kayttokerta("24.01.2017");
+        KertaAnnos annos = new KertaAnnos("Perusolut", 4.7, 2.1, 0.33, 6);
+        kerta.lisaaKertaAnnos(annos);
+        String vastaus = kerta.toString();
+        
+        assertEquals("Illan 24.01.2017 saldo:\n - Perusolut: vahvuus 4.7%, hinta 2.1e/0.33l, 6kpl\n", vastaus);
+    }
 }

@@ -8,6 +8,7 @@ package killjoy.logiikka;
 import java.util.ArrayList;
 
 public class Kayttokerta {
+
     private String pvm;
     private ArrayList<KertaAnnos> alkoholit;
     private ArrayList<MuuKulu> muutKulut;
@@ -21,9 +22,9 @@ public class Kayttokerta {
     public String getPvm() {
         return pvm;
     }
-    
+
     public void lisaaKertaAnnos(KertaAnnos annos) {
-        if(annos != null) {
+        if (annos != null) {
             alkoholit.add(annos);
         }
     }
@@ -35,22 +36,15 @@ public class Kayttokerta {
     @Override
     public String toString() {
         String saldo = "";
-        if(this.alkoholit.isEmpty() && this.muutKulut.isEmpty()) {
+        if (this.alkoholit.isEmpty() && this.muutKulut.isEmpty()) {
             saldo = "ei alkoholia eikä muita kuluja";
         } else {
             for (KertaAnnos annos : this.alkoholit) {
                 saldo = saldo + " - " + annos.toString() + "\n";
             }
         }
-        
+
         return "Illan " + this.pvm + " saldo:\n" + saldo;
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
 }
