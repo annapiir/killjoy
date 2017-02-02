@@ -1,4 +1,3 @@
-
 package killjoy.logiikka;
 
 import java.util.ArrayList;
@@ -22,38 +21,37 @@ public class Kayttokerta {
     public ArrayList<KertaAnnos> getAlkoholit() {
         return alkoholit;
     }
-    
+
     public void lisaaKertaAnnos(KertaAnnos annos) {
         if (annos != null) {
             this.alkoholit.add(annos);
             this.kulut.add(annos);
         }
     }
-    
+
     public void lisaaMuuKulu(Kulu kulu) {
         if (kulu != null) {
             this.kulut.add(kulu);
         }
     }
-    
-    
+
     public double laskeAlkoholiKayttokerrasta() {
         double maaraYht = 0;
-        
+
         for (KertaAnnos kertaAnnos : this.alkoholit) {
-            maaraYht =+ kertaAnnos.laskeAlkoholiKertaAnnoksesta();
+            maaraYht = +kertaAnnos.laskeAlkoholiKertaAnnoksesta();
         }
-        
+
         return maaraYht;
     }
-    
+
     public double laskeKulut() {
         double kulut = 0;
-        
+
         for (Kulu kulu : this.kulut) {
             kulut += kulu.hintaYht();
         }
-        
+
         return kulut;
     }
 
@@ -70,15 +68,14 @@ public class Kayttokerta {
 
         return "Illan " + this.pvm + " saldo:\n" + saldo + "\nPuhdasta alkoholia joit " + this.laskeAlkoholiKayttokerrasta() + "l\nKaikkiaan kuluja koitui " + this.laskeKulut() + " euroa";
     }
-    
+
     public String tulostaAlkoholit() {
         String alkoholit = "";
         for (KertaAnnos annos : this.alkoholit) {
-                alkoholit = alkoholit + " - " + annos.toString() + "\n";
+            alkoholit = alkoholit + " - " + annos.toString() + "\n";
         }
-        
+
         return alkoholit;
     }
-    
 
 }
