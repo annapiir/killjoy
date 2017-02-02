@@ -1,30 +1,20 @@
 
 package killjoy.logiikka;
 
-public class KertaAnnos {
+public class KertaAnnos extends Kulu {
     private Alkoholi alkoholi;
-    private double hinta;
     private double annosKoko;
-    private int maara;
 
-    public KertaAnnos(String nimi, double vahvuus, double hinta, double annosKoko, int maara) {
+    public KertaAnnos(double hinta, int maara, String nimi, double vahvuus, double annosKoko) {
+        super(hinta, maara);
         this.alkoholi = new Alkoholi(nimi, vahvuus);
-        this.hinta = hinta;
         this.annosKoko = annosKoko;
-        this.maara = maara;
     }
 
     public double getAnnosKoko() {
         return annosKoko;
     }
 
-    public int getMaara() {
-        return maara;
-    }
-
-    public double getHinta() {
-        return hinta;
-    }
 
     public Alkoholi getAlkoholi() {
         return alkoholi;

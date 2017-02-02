@@ -11,6 +11,7 @@ Päivä | Tunnit | Kuvaus
 26.01.2017 | 5h | Gitin kanssa taistelua, uuden aiheen ideointia, alkuvalmisteluja
 28.01.2017 | 2h | Ohjelmoitu tietojen sisäänlukua tekstikäyttöliittymällä ja hahmoteltu luokkia
 29.01.2017 | 3h | Koodin hiomista, testien tekemistä ja raporttien generointia
-
+02.02.2017 | 3h | Alkoholimäärien ja kulujen laskentaa, testien tekemistä
+ 
 
 
