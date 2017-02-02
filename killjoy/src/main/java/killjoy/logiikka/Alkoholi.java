@@ -12,6 +12,16 @@ public class Alkoholi {
         this.vahvuus = vahvuus;
     }
 
+    public double getVahvuus() {
+        return vahvuus;
+    }
+
+    public String getNimi() {
+        return nimi;
+    }
+    
+    
+
     @Override
     public String toString() {
         return this.nimi + ": vahvuus " + this.vahvuus + "%"; 

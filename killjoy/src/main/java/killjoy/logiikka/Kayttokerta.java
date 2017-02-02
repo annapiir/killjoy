@@ -23,14 +23,24 @@ public class Kayttokerta {
         return pvm;
     }
 
+    public ArrayList<KertaAnnos> getAlkoholit() {
+        return alkoholit;
+    }
+    
     public void lisaaKertaAnnos(KertaAnnos annos) {
         if (annos != null) {
             alkoholit.add(annos);
         }
     }
-
-    public ArrayList<KertaAnnos> getAlkoholit() {
-        return alkoholit;
+    
+    public double laskeAlkoholiKayttokerrasta() {
+        double maaraYht = 0;
+        
+        for (KertaAnnos kertaAnnos : this.alkoholit) {
+            maaraYht =+ kertaAnnos.laskeAlkoholiKertaAnnoksesta();
+        }
+        
+        return maaraYht;
     }
 
     @Override
@@ -44,7 +54,7 @@ public class Kayttokerta {
             }
         }
 
-        return "Illan " + this.pvm + " saldo:\n" + saldo;
+        return "Illan " + this.pvm + " saldo:\n" + saldo + "\nPuhdasta alkholia joit " + this.laskeAlkoholiKayttokerrasta() + "l";
     }
 
 }

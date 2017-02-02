@@ -14,6 +14,26 @@ public class KertaAnnos {
         this.maara = maara;
     }
 
+    public double getAnnosKoko() {
+        return annosKoko;
+    }
+
+    public int getMaara() {
+        return maara;
+    }
+
+    public double getHinta() {
+        return hinta;
+    }
+
+    public Alkoholi getAlkoholi() {
+        return alkoholi;
+    }
+    
+    public double laskeAlkoholiKertaAnnoksesta() {
+        return this.annosKoko * this.maara * (this.alkoholi.getVahvuus() / 100);
+    }
+
     @Override
     public String toString() {
         return this.alkoholi + ", hinta " + this.hinta + "e/" + this.annosKoko + "l, " + this.maara + "kpl";
