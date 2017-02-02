@@ -1,18 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package killjoy.kayttoliittyma;
 
 import java.util.Scanner;
 import killjoy.logiikka.Kayttokerta;
 import killjoy.logiikka.KertaAnnos;
+import killjoy.logiikka.Kulu;
 
-/**
- *
- * @author annapiir
- */
+
 public class Tiedonlukija {
     private Scanner lukija;
 
@@ -29,7 +23,7 @@ public class Tiedonlukija {
         return kerta;
     }
     
-    //uodaan käyttökerralle kerta-annokset (pitäisi ehkä siirtää ainakin osittain luokkaan KertaAnnos
+    //Luodaan käyttökerralle kerta-annokset (pitäisi ehkä siirtää ainakin osittain luokkaan KertaAnnos
     public KertaAnnos luoKertaAnnos(Kayttokerta kayttokerta) {
 
         try {
@@ -44,8 +38,22 @@ public class Tiedonlukija {
             System.out.println("Nautittujen annosten (pullon/lasillisen/tuopin lukumäärä (kokonaisluku)");
             int maara = Integer.parseInt(lukija.nextLine());
             
-            return new KertaAnnos(nimi, vahvuus, hinta, annoskoko, maara); 
+            return new KertaAnnos(hinta, maara, nimi, vahvuus, annoskoko); 
             
+        } catch (Exception e) {
+            System.out.println("Et syöttänyt arvoja oikein, yritä uudelleen");
+            return null;
+        }
+    }
+    
+    public Kulu luoMuuKulu(Kayttokerta kayttokerta) {
+        try {
+            System.out.println("Anna kulun hinta (euroa, desimaaliluku, piste erottimena:");
+            double hinta = Double.parseDouble(lukija.nextLine());
+            System.out.println("Anna määrä (lkm, kokonaisuluku):");
+            int maara = Integer.parseInt(lukija.nextLine());
+            
+            return new Kulu(hinta, maara) {};
         } catch (Exception e) {
             System.out.println("Et syöttänyt arvoja oikein, yritä uudelleen");
             return null;
@@ -54,8 +62,14 @@ public class Tiedonlukija {
     
     //Lopetusehto kerta-annosten syöttämieen
     public boolean lopeta() {
-        System.out.println("Lopetetaanko alkoholien syöttäminen? L lopettaa");
+        System.out.println("Lopetetaanko tietojen syöttäminen? L lopettaa");
         return lukija.nextLine().equals("L");
+    }
+
+    public boolean onkoMuitaKuluja() {
+        System.out.println("Oliko illan aikana muita kuluja? K:lla pääset syöttämään niitä");
+        String onko = this.lukija.nextLine();
+        return onko.equals("K");
     }
     
     

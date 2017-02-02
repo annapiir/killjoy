@@ -43,10 +43,17 @@ public class KertaAnnosTest {
     
     @Test
     public void konsturktoriAsettaaKertaAnnoksenOikein() {
-        KertaAnnos annos = new KertaAnnos("Perusolut", 4.7, 2.1, 0.33, 6);
+        KertaAnnos annos = new KertaAnnos(2.1, 6, "Perusolut", 4.7, 0.33);
         String vastaus = annos.toString();
         
         assertEquals("Perusolut: vahvuus 4.7%, hinta 2.1e/0.33l, 6kpl", vastaus);
     }
     
+    @Test
+    public void laskeeKertaAnnoksenAlkoholimaaranOikein() {
+        KertaAnnos annos = new KertaAnnos(2.1, 6, "Perusolut", 4.7, 0.33);
+        double vastaus = annos.laskeAlkoholiKertaAnnoksesta();
+
+        assertEquals(0.09306, vastaus, 0.001);
+    }
 }

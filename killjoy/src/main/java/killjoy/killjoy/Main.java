@@ -34,6 +34,21 @@ public class Main {
                 break;
             }
         }
+        
+        System.out.println("\nSyötä seuraavaksi muut illanvietton kulut:");
+        
+   
+        if(tiedonlukija.onkoMuitaKuluja()) {
+            //Lisätään muut kulut ArrayListiin
+            while (true) {
+                kerta.lisaaMuuKulu(tiedonlukija.luoMuuKulu(kerta));
+
+                if (tiedonlukija.lopeta()) {
+                    break;
+                }
+            }
+        }
+
 
         //Testataan lopputulosta tulostamalla käyttökerran tiedot 
         System.out.println(kerta);

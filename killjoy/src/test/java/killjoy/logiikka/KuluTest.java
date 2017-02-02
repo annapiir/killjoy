@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package killjoy.logiikka;
 
 import org.junit.After;
@@ -16,9 +11,9 @@ import static org.junit.Assert.*;
  *
  * @author annapiir
  */
-public class AlkoholiTest {
+public class KuluTest {
     
-    public AlkoholiTest() {
+    public KuluTest() {
     }
     
     @BeforeClass
@@ -37,11 +32,14 @@ public class AlkoholiTest {
     public void tearDown() {
     }
 
+    // TODO add test methods here.
+    // The methods must be annotated with annotation @Test. For example:
+    //
     @Test
-    public void konstruktoriAsettaaNimenJaVahvuudenOikein() {
-        Alkoholi alkoholi = new Alkoholi("Perusolut", 4.7);
-        String vastaus = alkoholi.toString();
+    public void kuluLaskeeHinnanYhteensaOikein() {
+        Kulu kulu = new Kulu(13.5, 2) {};
+        double vastaus = kulu.hintaYht();
         
-        assertEquals("Perusolut: vahvuus 4.7%", vastaus);
+        assertEquals(27, vastaus, 0.001);
     }
 }

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package killjoy.logiikka;
 
 import java.util.ArrayList;
@@ -11,12 +7,12 @@ public class Kayttokerta {
 
     private String pvm;
     private ArrayList<KertaAnnos> alkoholit;
-    private ArrayList<MuuKulu> muutKulut;
+    private ArrayList<Kulu> kulut;
 
     public Kayttokerta(String pvm) {
         this.pvm = pvm;
         this.alkoholit = new ArrayList<>();
-        this.muutKulut = new ArrayList<>();
+        this.kulut = new ArrayList<>();
     }
 
     public String getPvm() {
@@ -29,9 +25,17 @@ public class Kayttokerta {
     
     public void lisaaKertaAnnos(KertaAnnos annos) {
         if (annos != null) {
-            alkoholit.add(annos);
+            this.alkoholit.add(annos);
+            this.kulut.add(annos);
         }
     }
+    
+    public void lisaaMuuKulu(Kulu kulu) {
+        if (kulu != null) {
+            this.kulut.add(kulu);
+        }
+    }
+    
     
     public double laskeAlkoholiKayttokerrasta() {
         double maaraYht = 0;
@@ -42,19 +46,39 @@ public class Kayttokerta {
         
         return maaraYht;
     }
+    
+    public double laskeKulut() {
+        double kulut = 0;
+        
+        for (Kulu kulu : this.kulut) {
+            kulut += kulu.hintaYht();
+        }
+        
+        return kulut;
+    }
 
     @Override
     public String toString() {
         String saldo = "";
-        if (this.alkoholit.isEmpty() && this.muutKulut.isEmpty()) {
+        if (this.alkoholit.isEmpty() && this.kulut.isEmpty()) {
             saldo = "ei alkoholia eikä muita kuluja";
+        } else if (this.alkoholit.isEmpty()) {
+            System.out.println("Et nauttinut lainkaan alkoholia!");
         } else {
-            for (KertaAnnos annos : this.alkoholit) {
-                saldo = saldo + " - " + annos.toString() + "\n";
-            }
+            saldo += this.tulostaAlkoholit();
         }
 
-        return "Illan " + this.pvm + " saldo:\n" + saldo + "\nPuhdasta alkholia joit " + this.laskeAlkoholiKayttokerrasta() + "l";
+        return "Illan " + this.pvm + " saldo:\n" + saldo + "\nPuhdasta alkoholia joit " + this.laskeAlkoholiKayttokerrasta() + "l\nKaikkiaan kuluja koitui " + this.laskeKulut() + " euroa";
     }
+    
+    public String tulostaAlkoholit() {
+        String alkoholit = "";
+        for (KertaAnnos annos : this.alkoholit) {
+                alkoholit = alkoholit + " - " + annos.toString() + "\n";
+        }
+        
+        return alkoholit;
+    }
+    
 
 }

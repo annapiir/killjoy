@@ -5,10 +5,17 @@
  */
 package killjoy.logiikka;
 
-/**
- *
- * @author annapiir
- */
-public class MuuKulu {
+public class MuuKulu extends Kulu {
+    
+    public MuuKulu(double hinta, int maara) {
+        super(hinta, maara);
+    }
+
+    @Override
+    public String toString() {
+        return " - " + this.maara + " x " + this.hinta + " euroa";
+    }
+    
+    
     
 }
