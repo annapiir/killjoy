@@ -10,7 +10,7 @@ KillJoy on alkoholilaskuri, johon käyttäjä syöttää illan aikana nauttimans
 * [Tuntikirjanpito](https://github.com/annapiir/killjoy/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 
-* [Pit-raportti](https://htmlpreview.github.io/?https://github.com/annapiir/killjoy/blob/master/dokumentaatio/pit-reports/201702022320/index.html)
+* [Pit-raportti](https://htmlpreview.github.io/?https://github.com/annapiir/killjoy/blob/master/dokumentaatio/pit-raportti/201702022320/index.html)
 
-* [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/annapiir/killjoy/tree/master/dokumentaatio/checkstyle-raportti/checkstyle.html)
+* [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/annapiir/killjoy/blob/master/dokumentaatio/checkstyle-raportti/checkstyle.html)
 
