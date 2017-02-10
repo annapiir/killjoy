@@ -3,12 +3,11 @@ package killjoy.logiikka;
 import java.util.ArrayList;
 
 /**
-*Luokka pitää yllä listaa käyttökertaan liittyvistä alkoholeista ja muista kuluista,
-*ja tekee käyttökertaan liittyvät laskelmat.
+ * Luokka pitää yllä listaa käyttökertaan liittyvistä alkoholeista ja muista
+ * kuluista, ja tekee käyttökertaan liittyvät laskelmat.
  */
-
 public class Kayttokerta {
-    
+
     private String pvm;
     private ArrayList<KertaAnnos> alkoholit;
     private ArrayList<Kulu> kulut;
@@ -59,21 +58,20 @@ public class Kayttokerta {
 
         return kulut;
     }
-    
-    
+
     /**
-     * Metodi laskee, monta litraa alkoholipitoista nestettä tuli nautittua 
-     * käyttökerran aikana. 
-     * 
-     * @return käyttökertaan liittyvä alkoholinkulutus litroina 
+     * Metodi laskee, monta litraa alkoholipitoista nestettä tuli nautittua
+     * käyttökerran aikana.
+     *
+     * @return käyttökertaan liittyvä alkoholinkulutus litroina
      */
     public double laskeAlkoholinKokonaiskulutus() {
         double litroja = 0;
-        
+
         for (KertaAnnos kertaAnnos : this.alkoholit) {
-            litroja =+ kertaAnnos.laskeAlkoholiLitroinaKertaAnnoksesta();
+            litroja = +kertaAnnos.laskeAlkoholiLitroinaKertaAnnoksesta();
         }
-        
+
         return litroja;
     }
 

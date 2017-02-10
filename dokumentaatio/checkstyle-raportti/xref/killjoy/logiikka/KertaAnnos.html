@@ -9,37 +9,70 @@
 <a class="jxr_linenumber" name="L1" href="#L1">1</a>   
 <a class="jxr_linenumber" name="L2" href="#L2">2</a>   <strong class="jxr_keyword">package</strong> killjoy.logiikka;
 <a class="jxr_linenumber" name="L3" href="#L3">3</a>   
-<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../killjoy/logiikka/KertaAnnos.html">KertaAnnos</a> <strong class="jxr_keyword">extends</strong> <a href="../../killjoy/logiikka/Kulu.html">Kulu</a> {
-<a class="jxr_linenumber" name="L5" href="#L5">5</a>       <strong class="jxr_keyword">private</strong> <a href="../../killjoy/logiikka/Alkoholi.html">Alkoholi</a> alkoholi;
-<a class="jxr_linenumber" name="L6" href="#L6">6</a>       <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">double</strong> annosKoko;
-<a class="jxr_linenumber" name="L7" href="#L7">7</a>   
-<a class="jxr_linenumber" name="L8" href="#L8">8</a>       <strong class="jxr_keyword">public</strong> <a href="../../killjoy/logiikka/KertaAnnos.html">KertaAnnos</a>(<strong class="jxr_keyword">double</strong> hinta, <strong class="jxr_keyword">int</strong> maara, String nimi, <strong class="jxr_keyword">double</strong> vahvuus, <strong class="jxr_keyword">double</strong> annosKoko) {
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>           <strong class="jxr_keyword">super</strong>(hinta, maara);
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>          <strong class="jxr_keyword">this</strong>.alkoholi = <strong class="jxr_keyword">new</strong> <a href="../../killjoy/logiikka/Alkoholi.html">Alkoholi</a>(nimi, vahvuus);
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>          <strong class="jxr_keyword">this</strong>.annosKoko = annosKoko;
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>      }
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">double</strong> getAnnosKoko() {
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>          <strong class="jxr_keyword">return</strong> annosKoko;
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>      }
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>  
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>      <strong class="jxr_keyword">public</strong> <a href="../../killjoy/logiikka/Alkoholi.html">Alkoholi</a> getAlkoholi() {
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>          <strong class="jxr_keyword">return</strong> alkoholi;
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>      }
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>      
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">double</strong> laskeAlkoholiKertaAnnoksesta() {
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">this</strong>.annosKoko * <strong class="jxr_keyword">this</strong>.maara * (<strong class="jxr_keyword">this</strong>.alkoholi.getVahvuus() / 100);
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>      }
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>      @Override
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>      <strong class="jxr_keyword">public</strong> String toString() {
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">this</strong>.alkoholi + <span class="jxr_string">", hinta "</span> + <strong class="jxr_keyword">this</strong>.hinta + <span class="jxr_string">"e/"</span> + <strong class="jxr_keyword">this</strong>.annosKoko + <span class="jxr_string">"l, "</span> + <strong class="jxr_keyword">this</strong>.maara + <span class="jxr_string">"kpl"</span>;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_javadoccomment">*Luokan avulla hallinnoidaan alkoholin kerta-annoksiin liittyviä olioita ja lasketaan</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_javadoccomment">* yhteen kerta-annokseen liittyä alkoholimäärä. </em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_javadoccomment">*</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_javadoccomment">* @see killjoy.logiikka.Kulu</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../killjoy/logiikka/KertaAnnos.html">KertaAnnos</a> <strong class="jxr_keyword">extends</strong> <a href="../../killjoy/logiikka/Kulu.html">Kulu</a> {
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>      <strong class="jxr_keyword">private</strong> <a href="../../killjoy/logiikka/Alkoholi.html">Alkoholi</a> alkoholi;
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">double</strong> annosKoko;
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_javadoccomment">     * Konstruktori luo uuden kerta-annoksen laajentaen yliluokan Kulu konstruktoria.</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_javadoccomment">     * Parametreina annetaan yhden annoksen hinta, nautittujen annosten määrä, alkoholin </em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_javadoccomment">     * nimi, alkoholin vahvuus, ja yhden annoksen koko. </em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_javadoccomment">     * @param hinta</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_javadoccomment">     * @param maara</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_javadoccomment">     * @param nimi</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_javadoccomment">     * @param vahvuus</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_javadoccomment">     * @param annosKoko </em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>      <strong class="jxr_keyword">public</strong> <a href="../../killjoy/logiikka/KertaAnnos.html">KertaAnnos</a>(<strong class="jxr_keyword">double</strong> hinta, <strong class="jxr_keyword">int</strong> maara, String nimi, <strong class="jxr_keyword">double</strong> vahvuus, <strong class="jxr_keyword">double</strong> annosKoko) {
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>          <strong class="jxr_keyword">super</strong>(hinta, maara);
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>          <strong class="jxr_keyword">this</strong>.alkoholi = <strong class="jxr_keyword">new</strong> <a href="../../killjoy/logiikka/Alkoholi.html">Alkoholi</a>(nimi, vahvuus);
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>          <strong class="jxr_keyword">this</strong>.annosKoko = annosKoko;
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>      }
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>      
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>      
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>      
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  }
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">double</strong> getAnnosKoko() {
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>          <strong class="jxr_keyword">return</strong> annosKoko;
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>      }
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>      <strong class="jxr_keyword">public</strong> <a href="../../killjoy/logiikka/Alkoholi.html">Alkoholi</a> getAlkoholi() {
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>          <strong class="jxr_keyword">return</strong> alkoholi;
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>      }
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>      
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <em class="jxr_javadoccomment">     * Metodi laskee yhden nautitun kerta-annoksen absoluuttisen alkoholimäärän</em>
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  <em class="jxr_javadoccomment">     * litroina. Kertoo annoskoon annosten määrällä ja vahvuudella.</em>
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>  <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  <em class="jxr_javadoccomment">     * @return yhden kerta-annoksen alkoholimäärä litroina</em>
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">double</strong> laskeAlkoholiKertaAnnoksesta() {
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">this</strong>.annosKoko * <strong class="jxr_keyword">this</strong>.maara * (<strong class="jxr_keyword">this</strong>.alkoholi.getVahvuus() / 100);
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>      }
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>      
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>  <em class="jxr_javadoccomment">     * Metodi laskee kerta-annokseen liittyvän alkoholin määrän litroina. </em>
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  <em class="jxr_javadoccomment">     * </em>
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_javadoccomment">     * @return alkoholin määrä litroina</em>
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">double</strong> laskeAlkoholiLitroinaKertaAnnoksesta() {
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">this</strong>.annosKoko * <strong class="jxr_keyword">this</strong>.maara;
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>      }
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>      
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>      @Override
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>      <strong class="jxr_keyword">public</strong> String toString() {
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">this</strong>.alkoholi + <span class="jxr_string">", hinta "</span> + <strong class="jxr_keyword">this</strong>.hinta + <span class="jxr_string">"e/"</span> + <strong class="jxr_keyword">this</strong>.annosKoko + <span class="jxr_string">"l, "</span> + <strong class="jxr_keyword">this</strong>.maara + <span class="jxr_string">"kpl"</span>;
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>      }
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>      
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>      
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>      
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2017. All rights reserved.</div>
