@@ -1,12 +1,21 @@
-/*
-Pitää miettiä, tarviiko tätä luokkaa erikseen vai voisiko yhdistää KertaAnnos-luokkaan
- */
+
 package killjoy.logiikka;
+
+/**
+ * Luokkaa käytetään yleisten alkoholilajikkeeseen liittyvien tietojen säilömiseen. 
+ * 
+ */
 
 public class Alkoholi {
     private String nimi;
     private double vahvuus;
 
+    /**
+     * Konstruktori luo alkoholiolion. Parametreina annetaan alkoholin nimi ja vahvuus.
+     * 
+     * @param nimi
+     * @param vahvuus 
+     */
     public Alkoholi(String nimi, double vahvuus) {
         this.nimi = nimi;
         this.vahvuus = vahvuus;

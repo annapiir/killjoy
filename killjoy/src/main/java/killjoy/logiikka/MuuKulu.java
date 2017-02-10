@@ -1,12 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package killjoy.logiikka;
+
+/**
+ * Luokkaa käytetään muiden kuin alkoholista syntyvien kulujen hallinnointiin. 
+ * 
+ * @see killjoy.logiikka.Kulu
+ */
 
 public class MuuKulu extends Kulu {
     
+    /**
+     * Konstruktori luo uuden muun kulun laajentaen yliluokan Kulu konstruktoria. 
+     * Parametreina annetaan kulun yksikköhinta ja määrä.
+     * 
+     * @param hinta
+     * @param maara 
+     */
     public MuuKulu(double hinta, int maara) {
         super(hinta, maara);
     }
