@@ -5,6 +5,8 @@
  */
 package killjoy.killjoy;
 
+import javax.swing.SwingUtilities;
+import killjoy.kayttoliittyma.Kayttoliittyma;
 import killjoy.kayttoliittyma.Tiedonlukija;
 import killjoy.logiikka.Kayttokerta;
 import killjoy.logiikka.KertaAnnos;
@@ -16,6 +18,12 @@ import killjoy.logiikka.KertaAnnos;
 public class Main {
 
     public static void main(String[] args) {
+        
+        //Testataan käyttöliittymää
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
+        SwingUtilities.invokeLater(kayttoliittyma);
+        
+        /* 
         //Tulostetaan tervehdys
         System.out.println("Tervetuloa KillJoy-alkoholilaskuriin!");
 
@@ -52,6 +60,7 @@ public class Main {
 
         //Testataan lopputulosta tulostamalla käyttökerran tiedot 
         System.out.println(kerta);
+        */
 
     }
 }
