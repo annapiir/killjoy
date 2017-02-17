@@ -23,5 +23,7 @@ Ohjelma laskee, kuinka paljon illan aikana kului rahaa, kuinka paljon puhdasta a
 
 
 **Sekvenssikaaviot**
+
+
 ![Käyttäjä syöttää nautitun kerta-annoksen tiedot](https://github.com/annapiir/killjoy/blob/master/dokumentaatio/sekvenssikaavio1.png)
 
