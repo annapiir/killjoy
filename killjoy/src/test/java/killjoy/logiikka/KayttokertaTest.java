@@ -50,11 +50,11 @@ public class KayttokertaTest {
     @Test 
     public void lisaaKertaAnnosLisaaAnnoksenListaan() {
         Kayttokerta kerta = new Kayttokerta("24.01.2017");
-        KertaAnnos annos = new KertaAnnos(2.1, 6, "Perusolut", 4.7, 0.33);
+        KertaAnnos annos = new KertaAnnos(2.1, 6, 4.7, 0.33);
         kerta.lisaaKertaAnnos(annos);
         String vastaus = kerta.toString();
         
-        assertEquals("Illan 24.01.2017 saldo:\n - Perusolut: vahvuus 4.7%, hinta 2.1e/0.33l, 6kpl\n\nPuhdasta alkoholia joit 0.09306l\nKaikkiaan kuluja koitui 12.600000000000001 euroa", vastaus);
+        assertEquals("Illan 24.01.2017 saldo:\n - 4.7% vahvuista alkoholia, hinta 2.1e/0.33l, 6 kpl\n\nPuhdasta alkoholia joit 0.09306l\nKaikkiaan kuluja koitui 12.600000000000001 euroa", vastaus);
     }
     
     @Test 
@@ -69,12 +69,12 @@ public class KayttokertaTest {
     @Test 
     public void lisaaMuuKuluLisaaKulunListaan() {
         Kayttokerta kerta = new Kayttokerta("24.01.2017");
-        KertaAnnos annos = new KertaAnnos(2, 6, "Perusolut", 4.7, 0.33);
+        KertaAnnos annos = new KertaAnnos(2, 6, 4.7, 0.33);
         kerta.lisaaKertaAnnos(annos);
         Kulu muuKulu = new Kulu(13.5, 2) {};
         kerta.lisaaMuuKulu(muuKulu);
         String vastaus = kerta.toString();
         
-        assertEquals("Illan 24.01.2017 saldo:\n - Perusolut: vahvuus 4.7%, hinta 2.0e/0.33l, 6kpl\n\nPuhdasta alkoholia joit 0.09306l\nKaikkiaan kuluja koitui 39.0 euroa", vastaus);
+        assertEquals("Illan 24.01.2017 saldo:\n - 4.7% vahvuista alkoholia, hinta 2.0e/0.33l, 6 kpl\n\nPuhdasta alkoholia joit 0.09306l\nKaikkiaan kuluja koitui 39.0 euroa", vastaus);
     }
 }

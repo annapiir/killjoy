@@ -1,31 +1,31 @@
-
 package killjoy.logiikka;
 
 /**
-*Luokan avulla hallinnoidaan alkoholin kerta-annoksiin liittyviä olioita ja lasketaan
-* yhteen kerta-annokseen liittyä alkoholimäärä. 
-*
-* @see killjoy.logiikka.Kulu
+ * Luokan avulla hallinnoidaan alkoholin kerta-annoksiin liittyviä olioita ja
+ * lasketaan yhteen kerta-annokseen liittyä alkoholimäärä.
+ *
+ * @see killjoy.logiikka.Kulu
  */
-
 public class KertaAnnos extends Kulu {
-    private Alkoholi alkoholi;
+
+    private double vahvuus;
     private double annosKoko;
 
     /**
-     * Konstruktori luo uuden kerta-annoksen laajentaen yliluokan Kulu konstruktoria.
-     * Parametreina annetaan yhden annoksen hinta, nautittujen annosten määrä, alkoholin 
-     * nimi, alkoholin vahvuus, ja yhden annoksen koko. 
-     * 
+     * Konstruktori luo uuden kerta-annoksen laajentaen yliluokan Kulu
+     * konstruktoria. Parametreina annetaan yhden annoksen hinta, nautittujen
+     * annosten määrä, alkoholin nimi, alkoholin vahvuus, ja yhden annoksen
+     * koko.
+     *
      * @param hinta
      * @param maara
      * @param nimi
      * @param vahvuus
-     * @param annosKoko 
+     * @param annosKoko
      */
-    public KertaAnnos(double hinta, int maara, String nimi, double vahvuus, double annosKoko) {
+    public KertaAnnos(double hinta, int maara, double vahvuus, double annosKoko) {
         super(hinta, maara);
-        this.alkoholi = new Alkoholi(nimi, vahvuus);
+        this.vahvuus = vahvuus;
         this.annosKoko = annosKoko;
     }
 
@@ -33,35 +33,32 @@ public class KertaAnnos extends Kulu {
         return annosKoko;
     }
 
-
-    public Alkoholi getAlkoholi() {
-        return alkoholi;
+    public double getVahvuus() {
+        return this.vahvuus;
     }
-    
+
     /**
      * Metodi laskee yhden nautitun kerta-annoksen absoluuttisen alkoholimäärän
      * litroina. Kertoo annoskoon annosten määrällä ja vahvuudella.
-     * 
+     *
      * @return yhden kerta-annoksen alkoholimäärä litroina
      */
     public double laskeAlkoholiKertaAnnoksesta() {
-        return this.annosKoko * this.maara * (this.alkoholi.getVahvuus() / 100);
+        return this.annosKoko * this.maara * (this.vahvuus / 100);
     }
-    
+
     /**
-     * Metodi laskee kerta-annokseen liittyvän alkoholin määrän litroina. 
-     * 
+     * Metodi laskee kerta-annokseen liittyvän alkoholin määrän litroina.
+     *
      * @return alkoholin määrä litroina
      */
     public double laskeAlkoholiLitroinaKertaAnnoksesta() {
         return this.annosKoko * this.maara;
     }
-    
+
     @Override
     public String toString() {
-        return this.alkoholi + ", hinta " + this.hinta + "e/" + this.annosKoko + "l, " + this.maara + "kpl";
+        return this.vahvuus + "% vahvuista alkoholia, hinta " + this.hinta + "e/" + this.annosKoko + "l, " + this.maara + " kpl";
     }
-    
-    
-    
+
 }

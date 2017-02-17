@@ -11,7 +11,12 @@ public class Kayttokerta {
     private String pvm;
     private ArrayList<KertaAnnos> alkoholit;
     private ArrayList<Kulu> kulut;
-
+    
+    /**
+     * Konstruktori luo uuden käyttökerran. Parametriksi annetaan käyttökerran päivämäärä. 
+     * 
+     * @param pvm 
+     */
     public Kayttokerta(String pvm) {
         this.pvm = pvm;
         this.alkoholit = new ArrayList<>();
@@ -25,20 +30,38 @@ public class Kayttokerta {
     public ArrayList<KertaAnnos> getAlkoholit() {
         return alkoholit;
     }
-
+    
+    /**
+     * Metodi lisää uuden alkoholiannoksen alkoholilistaan ja annoksesta syntyvät
+     * kulut kuluihin. Parametrina annetaan yksi kerta-annos. 
+     * 
+     * @param annos 
+     */
     public void lisaaKertaAnnos(KertaAnnos annos) {
         if (annos != null) {
             this.alkoholit.add(annos);
             this.kulut.add(annos);
         }
     }
-
+    
+    /**
+     * Metodi lisää muun kuin alkoholista koituvan kulun kululistaan. Parametrina
+     * annetaan kulu.
+     * 
+     * @param kulu 
+     */
     public void lisaaMuuKulu(Kulu kulu) {
         if (kulu != null) {
             this.kulut.add(kulu);
         }
     }
-
+    
+    /**
+     * Metodi laskee käyttökertaan liittyvän alkoholimäärän. Lasketaan summaamalla
+     * yksittäisiin kerta-annoksiin liittyvät alkoholimäärät.
+     * 
+     * @return alkoholimäärä
+     */
     public double laskeAlkoholiKayttokerrasta() {
         double maaraYht = 0;
 
@@ -49,6 +72,11 @@ public class Kayttokerta {
         return maaraYht;
     }
 
+    /**
+     * Metodi laskee kulut yhdestä käyttökerrasta summaamalla kululistan kulut.
+     * 
+     * @return kulut yhteensä 
+     */
     public double laskeKulut() {
         double kulut = 0;
 

@@ -36,7 +36,7 @@ public class Tiedonlukija {
             System.out.println("Nautittujen annosten (pullon/lasillisen/tuopin lukumäärä (kokonaisluku)");
             int maara = Integer.parseInt(lukija.nextLine());
 
-            return new KertaAnnos(hinta, maara, nimi, vahvuus, annoskoko);
+            return new KertaAnnos(hinta, maara, vahvuus, annoskoko);
 
         } catch (Exception e) {
             System.out.println("Et syöttänyt arvoja oikein, yritä uudelleen");
