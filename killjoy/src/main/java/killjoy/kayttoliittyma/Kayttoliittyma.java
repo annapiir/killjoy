@@ -17,12 +17,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import killjoy.logiikka.KayttokertaRajapinta;
 
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
+    private KayttokertaRajapinta kayttokerta;
 
-    public Kayttoliittyma() {
+    public Kayttoliittyma(KayttokertaRajapinta kayttokerta) {
+        this.kayttokerta = kayttokerta;
     }
 
     @Override
@@ -70,8 +73,12 @@ public class Kayttoliittyma implements Runnable {
         JPanel pvmPaneeli = new JPanel();
         BoxLayout pvmLayout = new BoxLayout(pvmPaneeli, BoxLayout.X_AXIS);
         pvmPaneeli.setLayout(pvmLayout);
+        
         JLabel pvmTeksti = new JLabel("Päivämäärä: ");
         JTextField pvmKentta = new JTextField();
+        PvmKuuntelija pvmKuuntelija = new PvmKuuntelija(this.kayttokerta, pvmKentta);
+        pvmKentta.addActionListener(pvmKuuntelija);
+        
         pvmPaneeli.add(pvmTeksti);
         pvmPaneeli.add(pvmKentta);
         

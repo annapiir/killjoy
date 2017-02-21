@@ -16,7 +16,7 @@ public class Tiedonlukija {
     //Luodaan käyttökerta (pitäisi ehkä siirtää luokkaan Kayttokerta)
     public Kayttokerta luoKayttokerta() {
         System.out.println("Anna juhlaillan päivämäärä (pp.kk.vvvv)");
-        Kayttokerta kerta = new Kayttokerta(this.lukija.nextLine());
+        Kayttokerta kerta = new Kayttokerta();
 
         return kerta;
     }

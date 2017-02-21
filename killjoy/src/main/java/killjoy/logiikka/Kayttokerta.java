@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Luokka pitää yllä listaa käyttökertaan liittyvistä alkoholeista ja muista
  * kuluista, ja tekee käyttökertaan liittyvät laskelmat.
  */
-public class Kayttokerta {
+public class Kayttokerta implements KayttokertaRajapinta{
 
     private String pvm;
     private ArrayList<KertaAnnos> alkoholit;
@@ -17,8 +17,8 @@ public class Kayttokerta {
      * 
      * @param pvm 
      */
-    public Kayttokerta(String pvm) {
-        this.pvm = pvm;
+    public Kayttokerta() {
+        this.pvm = null;
         this.alkoholit = new ArrayList<>();
         this.kulut = new ArrayList<>();
     }
@@ -26,6 +26,12 @@ public class Kayttokerta {
     public String getPvm() {
         return pvm;
     }
+
+    public void setPvm(String pvm) {
+        this.pvm = pvm;
+    }
+    
+    
 
     public ArrayList<KertaAnnos> getAlkoholit() {
         return alkoholit;

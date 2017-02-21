@@ -9,6 +9,7 @@ import javax.swing.SwingUtilities;
 import killjoy.kayttoliittyma.Kayttoliittyma;
 import killjoy.kayttoliittyma.Tiedonlukija;
 import killjoy.logiikka.Kayttokerta;
+import killjoy.logiikka.KayttokertaRajapinta;
 import killjoy.logiikka.KertaAnnos;
 
 /**
@@ -18,49 +19,12 @@ import killjoy.logiikka.KertaAnnos;
 public class Main {
 
     public static void main(String[] args) {
+        KayttokertaRajapinta kayttokerta = new Kayttokerta();
         
         //Testataan käyttöliittymää
-        Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(kayttokerta);
         SwingUtilities.invokeLater(kayttoliittyma);
         
-        /* 
-        //Tulostetaan tervehdys
-        System.out.println("Tervetuloa KillJoy-alkoholilaskuriin!");
-
-        //Luodaan lukija tiedoille ja uusi käyttökerta
-        Tiedonlukija tiedonlukija = new Tiedonlukija();
-        Kayttokerta kerta = tiedonlukija.luoKayttokerta();
-
-        //Luodaan lista käyttökerran juomisista
-        System.out.println("Mitä joit?");
-
-        //Lisätään juomiset ArrayListiin (lopetusehtoa pitää vielä katsoa)
-        while (true) {
-            kerta.lisaaKertaAnnos(tiedonlukija.luoKertaAnnos(kerta));
-
-            if (tiedonlukija.lopeta()) {
-                break;
-            }
-        }
         
-        System.out.println("\nSyötä seuraavaksi muut illanvietton kulut:");
-        
-   
-        if(tiedonlukija.onkoMuitaKuluja()) {
-            //Lisätään muut kulut ArrayListiin
-            while (true) {
-                kerta.lisaaMuuKulu(tiedonlukija.luoMuuKulu(kerta));
-
-                if (tiedonlukija.lopeta()) {
-                    break;
-                }
-            }
-        }
-
-
-        //Testataan lopputulosta tulostamalla käyttökerran tiedot 
-        System.out.println(kerta);
-        */
-
     }
 }
