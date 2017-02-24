@@ -9,8 +9,8 @@ import javax.swing.SwingUtilities;
 import killjoy.kayttoliittyma.Kayttoliittyma;
 import killjoy.kayttoliittyma.Tiedonlukija;
 import killjoy.logiikka.Kayttokerta;
-import killjoy.logiikka.KayttokertaRajapinta;
 import killjoy.logiikka.KertaAnnos;
+import killjoy.logiikka.KayttokertaIF;
 
 /**
  *
@@ -19,7 +19,7 @@ import killjoy.logiikka.KertaAnnos;
 public class Main {
 
     public static void main(String[] args) {
-        KayttokertaRajapinta kayttokerta = new Kayttokerta();
+        KayttokertaIF kayttokerta = new Kayttokerta();
         
         //Testataan käyttöliittymää
         Kayttoliittyma kayttoliittyma = new Kayttoliittyma(kayttokerta);

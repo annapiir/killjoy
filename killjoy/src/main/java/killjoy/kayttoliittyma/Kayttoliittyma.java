@@ -17,14 +17,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
-import killjoy.logiikka.KayttokertaRajapinta;
+import killjoy.logiikka.KayttokertaIF;
 
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
-    private KayttokertaRajapinta kayttokerta;
+    private KayttokertaIF kayttokerta;
 
-    public Kayttoliittyma(KayttokertaRajapinta kayttokerta) {
+    public Kayttoliittyma(KayttokertaIF kayttokerta) {
         this.kayttokerta = kayttokerta;
     }
 
@@ -47,13 +47,91 @@ public class Kayttoliittyma implements Runnable {
         
         //Luodaan käyttöliittymään tietojen syöttämistä ja esittämistä varten paneelit
         JPanel pvmPaneeli = luoPvmPaneeli();
-        JPanel alkoholiPaneeli = luoAlkoholiPaneeli();
-        JPanel kuluPaneeli = luoKuluPaneeli();
-        JPanel tietoPaneeli = luoTietoPaneeli();
         JTextArea tuloksetTeksti = luoTulosLaatikko();
         JButton laskeTulokset = luoTulosNappi();
+        
+        //TIETOPANEELI
+        JPanel tietoPaneeli = new JPanel();
+        BoxLayout tekstiLayout = new BoxLayout(tietoPaneeli, BoxLayout.Y_AXIS);
+        tietoPaneeli.setLayout(tekstiLayout);
+
+        //Täytetään laatikko oletusviestillä
+        JTextArea tietoAlkoholi = new JTextArea("Et ole vielä syöttänyt yhtään alkoholia laskuriin");
+        JTextArea tietoMuuKulu = new JTextArea("Et ole syöttänyt muita kuluja");
+        tietoPaneeli.add(tietoAlkoholi);
+        tietoPaneeli.add(tietoMuuKulu);
+
+        luoRajat(tietoPaneeli, "Juomasi alkoholi");
  
         
+        //ALKOHOLIPANEELI
+        JPanel alkoholiPaneeli = new JPanel();
+        BoxLayout alkoholiLayout = new BoxLayout(alkoholiPaneeli, BoxLayout.X_AXIS);
+        alkoholiPaneeli.setLayout(alkoholiLayout);
+        
+        //Luodaan valikot
+        //Annosten määrälle
+        JLabel maaraTeksti = new JLabel(" x ");
+        JComboBox<Integer> maaraValikko= new JComboBox<>(maaraLista());
+        //Alkoholiannoksen kokoluokalle
+        JComboBox<Double> kokoValikko = new JComboBox<>(alkoholiKokoLista());
+        //Alkoholin vahvuudelle
+        JLabel vahvuusTeksti = new JLabel(" l, vahvuus ");
+        JComboBox<Double> vahvuusValikko = new JComboBox<>(alkoholiVahvuusLista());
+        //Annoksen hinnalle
+        JLabel hintaTeksti = new JLabel(" %, hinta ");
+        JComboBox<Double> hintaValikko = new JComboBox<>(hintaLista());
+        hintaValikko.setEditable(true);
+        JLabel hintaTeksti2 = new JLabel("euroa ");
+        //ja nappi tulosten tallettamiselle
+        JButton lisaaAlkoholi = new JButton("Lisää");
+        AlkoholiKuuntelija alkoholiKuuntelija = new AlkoholiKuuntelija(this.kayttokerta, maaraValikko, kokoValikko, vahvuusValikko, hintaValikko, lisaaAlkoholi, tietoAlkoholi, maaraLista(), hintaLista(), alkoholiKokoLista(), alkoholiVahvuusLista(), tietoMuuKulu);
+        lisaaAlkoholi.addActionListener(alkoholiKuuntelija);
+
+        luoRajat(alkoholiPaneeli, "Lisää alkoholiannoksia");
+
+        
+        alkoholiPaneeli.add(maaraValikko);
+        alkoholiPaneeli.add(maaraTeksti);
+        alkoholiPaneeli.add(kokoValikko);
+        alkoholiPaneeli.add(vahvuusTeksti);
+        alkoholiPaneeli.add(vahvuusValikko);
+        alkoholiPaneeli.add(hintaTeksti);
+        alkoholiPaneeli.add(hintaValikko);
+        alkoholiPaneeli.add(hintaTeksti2);
+        alkoholiPaneeli.add(lisaaAlkoholi);
+        
+        //KULUPANEELI
+        JPanel kuluPaneeli = new JPanel();
+        BoxLayout kuluLayout = new BoxLayout(kuluPaneeli, BoxLayout.X_AXIS);
+        kuluPaneeli.setLayout(kuluLayout);
+        
+        //Luodaan valikot
+        //Määrälle
+        JLabel maaraKuluTeksti = new JLabel(" x ");
+        JComboBox<Integer> maaraKuluValikko= new JComboBox<>(maaraLista());
+        //Hinnalle
+        JLabel hintaKuluTeksti = new JLabel(" hinta ");
+        JComboBox<Double> hintaKuluValikko = new JComboBox<>(hintaLista());
+        hintaKuluValikko.setEditable(true);
+        JLabel hintaKuluTeksti2 = new JLabel("euroa  ");
+        //ja nappi tulosten tallettamiselle
+        JButton lisaaKulu = new JButton("Lisää");
+        KuluKuuntelija kuluKuuntelija;
+        kuluKuuntelija = new KuluKuuntelija(this.kayttokerta, maaraKuluValikko, hintaKuluValikko, lisaaKulu, maaraLista(), hintaLista(), tietoMuuKulu);
+        lisaaKulu.addActionListener(kuluKuuntelija);
+        
+
+        luoRajat(kuluPaneeli, "Lisää muita kuluja");
+        
+        kuluPaneeli.add(maaraKuluValikko);
+        kuluPaneeli.add(maaraKuluTeksti);
+        kuluPaneeli.add(hintaKuluTeksti);
+        kuluPaneeli.add(hintaKuluValikko);
+        kuluPaneeli.add(hintaKuluTeksti2);
+        kuluPaneeli.add(lisaaKulu);
+        
+
         
         //Lisätään kaikki osaset ikkunaan
         container.add(pvmPaneeli); 
@@ -85,43 +163,6 @@ public class Kayttoliittyma implements Runnable {
         return pvmPaneeli;
     }
 
-    private JPanel luoAlkoholiPaneeli() {
-        JPanel alkoholiPaneeli = new JPanel();
-        BoxLayout alkoholiLayout = new BoxLayout(alkoholiPaneeli, BoxLayout.X_AXIS);
-        alkoholiPaneeli.setLayout(alkoholiLayout);
-        
-        //Luodaan valikot
-        //Annosten määrälle
-        JLabel maaraTeksti = new JLabel(" x ");
-        JComboBox<Integer> maaraValikko= new JComboBox<>(maaraLista());
-        //Alkoholiannoksen kokoluokalle
-        JComboBox<Double> kokoValikko = new JComboBox<>(alkoholiKokoLista());
-        //Alkoholin vahvuudelle
-        JLabel vahvuusTeksti = new JLabel(" l, vahvuus ");
-        JComboBox<Double> vahvuusValikko = new JComboBox<>(alkoholiVahvuusLista());
-        //Annoksen hinnalle
-        JLabel hintaTeksti = new JLabel(" %, hinta ");
-        JComboBox<Double> hintaValikko = new JComboBox<>(hintaLista());
-        hintaValikko.setEditable(true);
-        JLabel hintaTeksti2 = new JLabel("euroa ");
-        //ja nappi tulosten tallettamiselle
-        JButton lisaaAlkoholi = new JButton("Lisää");
-
-        luoRajat(alkoholiPaneeli, "Lisää alkoholiannoksia");
-
-        
-        alkoholiPaneeli.add(maaraValikko);
-        alkoholiPaneeli.add(maaraTeksti);
-        alkoholiPaneeli.add(kokoValikko);
-        alkoholiPaneeli.add(vahvuusTeksti);
-        alkoholiPaneeli.add(vahvuusValikko);
-        alkoholiPaneeli.add(hintaTeksti);
-        alkoholiPaneeli.add(hintaValikko);
-        alkoholiPaneeli.add(hintaTeksti2);
-        alkoholiPaneeli.add(lisaaAlkoholi);
-        
-        return alkoholiPaneeli;
-    }
     
     private Integer[] maaraLista() {
         Integer[] lista = {1,2,3,4,5,6,7,8,9,10};
@@ -143,50 +184,6 @@ public class Kayttoliittyma implements Runnable {
         return lista;
     }
 
-    private JPanel luoKuluPaneeli() {
-        JPanel kuluPaneeli = new JPanel();
-        BoxLayout kuluLayout = new BoxLayout(kuluPaneeli, BoxLayout.X_AXIS);
-        kuluPaneeli.setLayout(kuluLayout);
-        
-        //Luodaan valikot
-        //Määrälle
-        JLabel maaraKuluTeksti = new JLabel(" x ");
-        JComboBox<Integer> maaraKuluValikko= new JComboBox<>(maaraLista());
-        //Hinnalle
-        JLabel hintaKuluTeksti = new JLabel(" hinta ");
-        JComboBox<Double> hintaKuluValikko = new JComboBox<>(hintaLista());
-        hintaKuluValikko.setEditable(true);
-        JLabel hintaKuluTeksti2 = new JLabel("euroa  ");
-        //ja nappi tulosten tallettamiselle
-        JButton lisaaKulu = new JButton("Lisää");
-
-        luoRajat(kuluPaneeli, "Lisää muita kuluja");
-        
-        kuluPaneeli.add(maaraKuluValikko);
-        kuluPaneeli.add(maaraKuluTeksti);
-        kuluPaneeli.add(hintaKuluTeksti);
-        kuluPaneeli.add(hintaKuluValikko);
-        kuluPaneeli.add(hintaKuluTeksti2);
-        kuluPaneeli.add(lisaaKulu);
-        
-        return kuluPaneeli;   
-    }
-
-    private JPanel luoTietoPaneeli() {
-        JPanel tietoPaneeli = new JPanel();
-        BoxLayout tekstiLayout = new BoxLayout(tietoPaneeli, BoxLayout.Y_AXIS);
-        tietoPaneeli.setLayout(tekstiLayout);
-
-        //Täytetään laatikko oletusviestillä
-        JTextArea tietoAlkoholi = new JTextArea("Et ole vielä syöttänyt yhtään alkoholia laskuriin");
-        JTextArea tietoMuuKulu = new JTextArea("Et ole syöttänyt muita kuluja");
-        tietoPaneeli.add(tietoAlkoholi);
-        tietoPaneeli.add(tietoMuuKulu);
-
-        luoRajat(tietoPaneeli, "Juomasi alkoholi");
-        
-        return tietoPaneeli;
-    }
 
     private JTextArea luoTulosLaatikko() {
         JTextArea tuloksetTeksti= new JTextArea("Ei vielä tuloksia...");

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Luokka pitää yllä listaa käyttökertaan liittyvistä alkoholeista ja muista
  * kuluista, ja tekee käyttökertaan liittyvät laskelmat.
  */
-public class Kayttokerta implements KayttokertaRajapinta{
+public class Kayttokerta implements KayttokertaIF{
 
     private String pvm;
     private ArrayList<KertaAnnos> alkoholit;
@@ -43,11 +43,9 @@ public class Kayttokerta implements KayttokertaRajapinta{
      * 
      * @param annos 
      */
-    public void lisaaKertaAnnos(KertaAnnos annos) {
-        if (annos != null) {
-            this.alkoholit.add(annos);
-            this.kulut.add(annos);
-        }
+    public void lisaaKertaAnnos(double hinta, int maara, double vahvuus, double annoskoko) {
+            this.alkoholit.add(new KertaAnnos(hinta, maara, vahvuus, annoskoko));
+            this.kulut.add(new Kulu(hinta, maara) {});
     }
     
     /**
@@ -56,10 +54,8 @@ public class Kayttokerta implements KayttokertaRajapinta{
      * 
      * @param kulu 
      */
-    public void lisaaMuuKulu(Kulu kulu) {
-        if (kulu != null) {
-            this.kulut.add(kulu);
-        }
+    public void lisaaMuuKulu(double hinta, int maara) {
+            this.kulut.add(new Kulu(hinta, maara) {});                      
     }
     
     /**
@@ -72,7 +68,7 @@ public class Kayttokerta implements KayttokertaRajapinta{
         double maaraYht = 0;
 
         for (KertaAnnos kertaAnnos : this.alkoholit) {
-            maaraYht = +kertaAnnos.laskeAlkoholiKertaAnnoksesta();
+            maaraYht = +kertaAnnos.laskeAlkoholi();
         }
 
         return maaraYht;
@@ -103,7 +99,7 @@ public class Kayttokerta implements KayttokertaRajapinta{
         double litroja = 0;
 
         for (KertaAnnos kertaAnnos : this.alkoholit) {
-            litroja = +kertaAnnos.laskeAlkoholiLitroinaKertaAnnoksesta();
+            litroja = +kertaAnnos.laskeLitrat();
         }
 
         return litroja;
@@ -124,12 +120,21 @@ public class Kayttokerta implements KayttokertaRajapinta{
     }
 
     public String tulostaAlkoholit() {
-        String alkoholit = "";
+        String alkoholit = "Nautittu alkoholi:\n";
         for (KertaAnnos annos : this.alkoholit) {
             alkoholit = alkoholit + " - " + annos.toString() + "\n";
         }
 
-        return alkoholit;
+        return alkoholit + "\n";
     }
+    
+    public String tulostaKulut() {
+        String kulut  = "Kulut:\n";
+        for (Kulu kulu : this.kulut) {
+            kulut = kulut + " - " + kulu.toString() + "\n";
+        }
+        
+        return kulut;
+}
 
 }

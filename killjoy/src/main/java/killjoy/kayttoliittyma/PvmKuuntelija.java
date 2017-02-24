@@ -4,13 +4,13 @@ package killjoy.kayttoliittyma;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextField;
-import killjoy.logiikka.KayttokertaRajapinta;
+import killjoy.logiikka.KayttokertaIF;
 
 public class PvmKuuntelija implements ActionListener{
     private JTextField pvmKentta;
-    private KayttokertaRajapinta kayttokerta;
+    private KayttokertaIF kayttokerta;
 
-    public PvmKuuntelija(KayttokertaRajapinta kayttokerta, JTextField pvmKentta) {
+    public PvmKuuntelija(KayttokertaIF kayttokerta, JTextField pvmKentta) {
         this.pvmKentta = pvmKentta;  
         this.kayttokerta = kayttokerta;
     }

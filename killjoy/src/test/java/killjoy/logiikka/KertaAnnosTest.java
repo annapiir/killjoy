@@ -52,7 +52,7 @@ public class KertaAnnosTest {
     @Test
     public void laskeeKertaAnnoksenAlkoholimaaranOikein() {
         KertaAnnos annos = new KertaAnnos(2.1, 6, 4.7, 0.33);
-        double vastaus = annos.laskeAlkoholiKertaAnnoksesta();
+        double vastaus = annos.laskeAlkoholi();
 
         assertEquals(0.09306, vastaus, 0.001);
     }

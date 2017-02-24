@@ -36,5 +36,12 @@ public abstract class Kulu {
     public double hintaYht() {
         return this.hinta * this.maara;
     }
+
+    @Override
+    public String toString() {
+        return this.maara + " x " + this.hinta + " euroa = " + hintaYht() + " euroa";
+    }
+    
+    
     
 }

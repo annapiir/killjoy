@@ -43,7 +43,7 @@ public class KertaAnnos extends Kulu {
      *
      * @return yhden kerta-annoksen alkoholimäärä litroina
      */
-    public double laskeAlkoholiKertaAnnoksesta() {
+    public double laskeAlkoholi() {
         return this.annosKoko * this.maara * (this.vahvuus / 100);
     }
 
@@ -52,7 +52,7 @@ public class KertaAnnos extends Kulu {
      *
      * @return alkoholin määrä litroina
      */
-    public double laskeAlkoholiLitroinaKertaAnnoksesta() {
+    public double laskeLitrat() {
         return this.annosKoko * this.maara;
     }
 
