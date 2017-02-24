@@ -16,7 +16,8 @@ import killjoy.logiikka.KayttokertaIF;
  *
  * @author annapiir
  */
-public class AlkoholiKuuntelija implements ActionListener{
+public class AlkoholiKuuntelija implements ActionListener {
+
     private KayttokertaIF kayttokerta;
     private JComboBox<Integer> maaraValikko;
     private JComboBox<Double> kokoValikko;
@@ -52,12 +53,10 @@ public class AlkoholiKuuntelija implements ActionListener{
         double vahvuus = this.alkoholiVahvuusLista[this.vahvuusValikko.getSelectedIndex()];
         double hinta = this.hintaLista[this.hintaValikko.getSelectedIndex()];
         this.kayttokerta.lisaaKertaAnnos(hinta, maara, vahvuus, koko);
-        
+
         this.tietoAlkoholi.setText(this.kayttokerta.tulostaAlkoholit());
         this.tietoMuuKulu.setText(this.kayttokerta.tulostaKulut());
-        
-        
-        
+
     }
-    
+
 }

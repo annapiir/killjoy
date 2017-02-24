@@ -44,12 +44,12 @@ public class Kayttoliittyma implements Runnable {
     private void luoKomponentit(Container container) {
         BoxLayout layout = new BoxLayout(container, BoxLayout.Y_AXIS);
         container.setLayout(layout);
-        
+
         //Luodaan käyttöliittymään tietojen syöttämistä ja esittämistä varten paneelit
         JPanel pvmPaneeli = luoPvmPaneeli();
         JTextArea tuloksetTeksti = luoTulosLaatikko();
         JButton laskeTulokset = luoTulosNappi();
-        
+
         //TIETOPANEELI
         JPanel tietoPaneeli = new JPanel();
         BoxLayout tekstiLayout = new BoxLayout(tietoPaneeli, BoxLayout.Y_AXIS);
@@ -62,17 +62,16 @@ public class Kayttoliittyma implements Runnable {
         tietoPaneeli.add(tietoMuuKulu);
 
         luoRajat(tietoPaneeli, "Juomasi alkoholi");
- 
-        
+
         //ALKOHOLIPANEELI
         JPanel alkoholiPaneeli = new JPanel();
         BoxLayout alkoholiLayout = new BoxLayout(alkoholiPaneeli, BoxLayout.X_AXIS);
         alkoholiPaneeli.setLayout(alkoholiLayout);
-        
+
         //Luodaan valikot
         //Annosten määrälle
         JLabel maaraTeksti = new JLabel(" x ");
-        JComboBox<Integer> maaraValikko= new JComboBox<>(maaraLista());
+        JComboBox<Integer> maaraValikko = new JComboBox<>(maaraLista());
         //Alkoholiannoksen kokoluokalle
         JComboBox<Double> kokoValikko = new JComboBox<>(alkoholiKokoLista());
         //Alkoholin vahvuudelle
@@ -90,7 +89,6 @@ public class Kayttoliittyma implements Runnable {
 
         luoRajat(alkoholiPaneeli, "Lisää alkoholiannoksia");
 
-        
         alkoholiPaneeli.add(maaraValikko);
         alkoholiPaneeli.add(maaraTeksti);
         alkoholiPaneeli.add(kokoValikko);
@@ -100,16 +98,16 @@ public class Kayttoliittyma implements Runnable {
         alkoholiPaneeli.add(hintaValikko);
         alkoholiPaneeli.add(hintaTeksti2);
         alkoholiPaneeli.add(lisaaAlkoholi);
-        
+
         //KULUPANEELI
         JPanel kuluPaneeli = new JPanel();
         BoxLayout kuluLayout = new BoxLayout(kuluPaneeli, BoxLayout.X_AXIS);
         kuluPaneeli.setLayout(kuluLayout);
-        
+
         //Luodaan valikot
         //Määrälle
         JLabel maaraKuluTeksti = new JLabel(" x ");
-        JComboBox<Integer> maaraKuluValikko= new JComboBox<>(maaraLista());
+        JComboBox<Integer> maaraKuluValikko = new JComboBox<>(maaraLista());
         //Hinnalle
         JLabel hintaKuluTeksti = new JLabel(" hinta ");
         JComboBox<Double> hintaKuluValikko = new JComboBox<>(hintaLista());
@@ -120,21 +118,18 @@ public class Kayttoliittyma implements Runnable {
         KuluKuuntelija kuluKuuntelija;
         kuluKuuntelija = new KuluKuuntelija(this.kayttokerta, maaraKuluValikko, hintaKuluValikko, lisaaKulu, maaraLista(), hintaLista(), tietoMuuKulu);
         lisaaKulu.addActionListener(kuluKuuntelija);
-        
 
         luoRajat(kuluPaneeli, "Lisää muita kuluja");
-        
+
         kuluPaneeli.add(maaraKuluValikko);
         kuluPaneeli.add(maaraKuluTeksti);
         kuluPaneeli.add(hintaKuluTeksti);
         kuluPaneeli.add(hintaKuluValikko);
         kuluPaneeli.add(hintaKuluTeksti2);
         kuluPaneeli.add(lisaaKulu);
-        
 
-        
         //Lisätään kaikki osaset ikkunaan
-        container.add(pvmPaneeli); 
+        container.add(pvmPaneeli);
         container.add(alkoholiPaneeli);
         container.add(kuluPaneeli);
         container.add(tietoPaneeli);
@@ -151,57 +146,55 @@ public class Kayttoliittyma implements Runnable {
         JPanel pvmPaneeli = new JPanel();
         BoxLayout pvmLayout = new BoxLayout(pvmPaneeli, BoxLayout.X_AXIS);
         pvmPaneeli.setLayout(pvmLayout);
-        
+
         JLabel pvmTeksti = new JLabel("Päivämäärä: ");
         JTextField pvmKentta = new JTextField();
         PvmKuuntelija pvmKuuntelija = new PvmKuuntelija(this.kayttokerta, pvmKentta);
         pvmKentta.addActionListener(pvmKuuntelija);
-        
+
         pvmPaneeli.add(pvmTeksti);
         pvmPaneeli.add(pvmKentta);
-        
+
         return pvmPaneeli;
     }
 
-    
     private Integer[] maaraLista() {
-        Integer[] lista = {1,2,3,4,5,6,7,8,9,10};
+        Integer[] lista = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         return lista;
     }
-    
+
     private Double[] alkoholiKokoLista() {
         Double[] lista = {0.04, 0.08, 0.12, 0.16, 0.24, 0.33, 0.5, 0.568, 0.75, 3.0};
         return lista;
     }
-    
+
     private Double[] alkoholiVahvuusLista() {
         Double[] lista = {2.6, 4.7, 5.2, 12.5, 22.0, 38.5};
         return lista;
     }
-    
+
     private Double[] hintaLista() {
         Double[] lista = {1.2, 3.5, 5.2, 6.9, 9.9, 15.0};
         return lista;
     }
 
-
     private JTextArea luoTulosLaatikko() {
-        JTextArea tuloksetTeksti= new JTextArea("Ei vielä tuloksia...");
+        JTextArea tuloksetTeksti = new JTextArea("Ei vielä tuloksia...");
         luoRajat(tuloksetTeksti, "Tulokset");
-        
+
         return tuloksetTeksti;
     }
 
     private JButton luoTulosNappi() {
         JButton laskeTulokset = new JButton("Laske tulokset");
-        
-        return laskeTulokset;     
+
+        return laskeTulokset;
     }
-    
+
     private void luoRajat(JComponent objekti, String otsikko) {
         objekti.setBorder(
-            BorderFactory.createCompoundBorder(
-                BorderFactory.createTitledBorder(otsikko),
-                BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+                BorderFactory.createCompoundBorder(
+                        BorderFactory.createTitledBorder(otsikko),
+                        BorderFactory.createEmptyBorder(5, 5, 5, 5)));
     }
 }

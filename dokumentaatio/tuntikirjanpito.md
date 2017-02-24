@@ -16,6 +16,8 @@ Päivä | Tunnit | Kuvaus
 10.02.2017 | 2h | Aloitettu JavaDocia, lisätty laskentaa tekeviä metodeja, päivitetty dokumentaatio
 15.02.2017 | 2h | Käyttöliittymän hahmottelua
 17.02.2017 | 3h | Dokumentoinnin päivitystä, refaktorointia koodikatselmointipalautteen perusteella, käyttöliittymän tekemistä
+22.02.2017 | 3h | Käyttöliittymän kanssa ahertamista
+24.02.2017 | 4h | Käyttöliittymän ja dokumentaation viilaamista
  
 
 

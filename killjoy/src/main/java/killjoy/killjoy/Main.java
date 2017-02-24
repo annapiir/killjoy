@@ -20,11 +20,10 @@ public class Main {
 
     public static void main(String[] args) {
         KayttokertaIF kayttokerta = new Kayttokerta();
-        
+
         //Testataan käyttöliittymää
         Kayttoliittyma kayttoliittyma = new Kayttoliittyma(kayttokerta);
         SwingUtilities.invokeLater(kayttoliittyma);
-        
-        
+
     }
 }

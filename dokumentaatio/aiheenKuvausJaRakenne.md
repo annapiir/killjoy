@@ -14,6 +14,11 @@ Ohjelma laskee, kuinka paljon illan aikana kului rahaa, kuinka paljon puhdasta a
 * Saa kokoomatiedot illan alkoholinkulutuksesta
 * Saa palautetta siitä, menikö ilta alkoholin- ja rahankulutuksen näkökulmasta ihan putkeen 
 
+**Rakennekuvaus**
+
+Ohjelmalogiikan ytimessä on käyttökerta (luokka Kayttokerta), joka pitää yllä tietoja sekä käyttökertaan liittyvistä juoduista alkoholeista että muista kuluista ja laskee lopulliset tulokset. Käyttöliittymä kommunikoi kuuntelijoiden ja KayttokertaIF-rajapinnan välityksellä käyttökertaluokan kanssa. 
+
+Käyttökerta luo uusia alkoholiannoksia (luokka KertaAnnos) ja kuluja (abstrakti luokka Kulu). Kuluja koituu sekä alkoholista että muista satunnaisista kuluista.
 
 
 **Luokkakaavio**

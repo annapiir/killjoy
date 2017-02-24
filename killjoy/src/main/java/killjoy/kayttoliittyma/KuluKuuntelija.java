@@ -12,7 +12,8 @@ import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import killjoy.logiikka.KayttokertaIF;
 
-public class KuluKuuntelija implements ActionListener{
+public class KuluKuuntelija implements ActionListener {
+
     private KayttokertaIF kayttokerta;
     private JComboBox<Integer> maaraValikko;
     private JComboBox<Double> hintaValikko;
@@ -27,18 +28,17 @@ public class KuluKuuntelija implements ActionListener{
         this.maaraValikko = maaraValikko;
         this.nappi = nappi;
         this.maaralista = maaralista;
-        this.hintalista = hintalista; 
+        this.hintalista = hintalista;
         this.tietoMuuKulu = tietoMuuKulu;
     }
-    
 
     @Override
     public void actionPerformed(ActionEvent e) {
         double hinta = this.hintalista[this.hintaValikko.getSelectedIndex()];
         int maara = this.maaralista[this.maaraValikko.getSelectedIndex()];
         this.kayttokerta.lisaaMuuKulu(hinta, maara);
-        
+
         this.tietoMuuKulu.setText(this.kayttokerta.tulostaKulut());
     }
-    
+
 }

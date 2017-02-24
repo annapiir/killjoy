@@ -29,10 +29,20 @@ public class KertaAnnos extends Kulu {
         this.annosKoko = annosKoko;
     }
 
+    /**
+     * Palauttaa annoskoon.
+     *
+     * @return Annoskoko, litraa (double)
+     */
     public double getAnnosKoko() {
         return annosKoko;
     }
 
+    /**
+     * Palauttaa alkoholiannoksen vahvuuden.
+     *
+     * @return Vahvuus, % (double)
+     */
     public double getVahvuus() {
         return this.vahvuus;
     }
@@ -56,6 +66,11 @@ public class KertaAnnos extends Kulu {
         return this.annosKoko * this.maara;
     }
 
+    /**
+     * Palauttaa alkoholiannoksen tiedot.
+     *
+     * @return Annoksen tiedot (String)
+     */
     @Override
     public String toString() {
         return this.vahvuus + "% vahvuista alkoholia, hinta " + this.hinta + "e/" + this.annosKoko + "l, " + this.maara + " kpl";
