@@ -48,14 +48,19 @@ public class AlkoholiKuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int maara = this.maaraLista[this.maaraValikko.getSelectedIndex()];
-        double koko = this.alkoholiKokoLista[this.kokoValikko.getSelectedIndex()];
-        double vahvuus = this.alkoholiVahvuusLista[this.vahvuusValikko.getSelectedIndex()];
-        double hinta = this.hintaLista[this.hintaValikko.getSelectedIndex()];
-        this.kayttokerta.lisaaKertaAnnos(hinta, maara, vahvuus, koko);
+        try {
+            int maara = this.maaraLista[this.maaraValikko.getSelectedIndex()];
+            double koko = this.alkoholiKokoLista[this.kokoValikko.getSelectedIndex()];
+            double vahvuus = this.alkoholiVahvuusLista[this.vahvuusValikko.getSelectedIndex()];
+            double hinta = this.hintaLista[this.hintaValikko.getSelectedIndex()];
+            this.kayttokerta.lisaaKertaAnnos(hinta, maara, vahvuus, koko);
 
-        this.tietoAlkoholi.setText(this.kayttokerta.tulostaAlkoholit());
-        this.tietoMuuKulu.setText(this.kayttokerta.tulostaKulut());
+            this.tietoAlkoholi.setText(this.kayttokerta.tulostaAlkoholit());
+            this.tietoMuuKulu.setText(this.kayttokerta.tulostaKulut());
+        } catch (Exception exception) {
+            
+        }
+        
 
     }
 

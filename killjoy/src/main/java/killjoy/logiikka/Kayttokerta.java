@@ -73,7 +73,7 @@ public class Kayttokerta implements KayttokertaIF {
      * @param hinta
      * @param maara
      */
-    public void lisaaMuuKulu(double hinta, int maara) {
+    public void lisaaMuuKulu(double hinta, int maara) throws ArrayIndexOutOfBoundsException {
         this.kulut.add(new Kulu(hinta, maara) {
         });
     }
@@ -138,8 +138,6 @@ public class Kayttokerta implements KayttokertaIF {
             saldo = "ei alkoholia eikä muita kuluja";
         } else if (this.alkoholit.isEmpty()) {
             System.out.println("Et nauttinut lainkaan alkoholia!");
-        } else {
-            saldo += this.tulostaAlkoholit();
         }
 
         return "Illan " + this.pvm + " saldo:\n" + saldo + "\nPuhdasta alkoholia joit " + this.laskeAlkoholiKayttokerrasta() + "l\nKaikkiaan kuluja koitui " + this.laskeKulut() + " euroa";

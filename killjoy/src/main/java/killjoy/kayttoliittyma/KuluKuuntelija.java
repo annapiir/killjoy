@@ -5,6 +5,7 @@
  */
 package killjoy.kayttoliittyma;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -34,11 +35,16 @@ public class KuluKuuntelija implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        double hinta = this.hintalista[this.hintaValikko.getSelectedIndex()];
-        int maara = this.maaralista[this.maaraValikko.getSelectedIndex()];
-        this.kayttokerta.lisaaMuuKulu(hinta, maara);
+        try {
+            double hinta = this.hintalista[this.hintaValikko.getSelectedIndex()];
+            int maara = this.maaralista[this.maaraValikko.getSelectedIndex()];
+            this.kayttokerta.lisaaMuuKulu(hinta, maara);
 
-        this.tietoMuuKulu.setText(this.kayttokerta.tulostaKulut());
+            this.tietoMuuKulu.setText(this.kayttokerta.tulostaKulut());
+        } catch (Exception exception) {
+            
+        }
+       
     }
 
 }

@@ -48,7 +48,7 @@ public class Kayttoliittyma implements Runnable {
         //Luodaan käyttöliittymään tietojen syöttämistä ja esittämistä varten paneelit
         JPanel pvmPaneeli = luoPvmPaneeli();
         JTextArea tuloksetTeksti = luoTulosLaatikko();
-        JButton laskeTulokset = luoTulosNappi();
+        JButton laskeTulokset = luoTulosNappi(tuloksetTeksti);
 
         //TIETOPANEELI
         JPanel tietoPaneeli = new JPanel();
@@ -185,8 +185,10 @@ public class Kayttoliittyma implements Runnable {
         return tuloksetTeksti;
     }
 
-    private JButton luoTulosNappi() {
+    private JButton luoTulosNappi(JTextArea tuloksetTeksti) {
         JButton laskeTulokset = new JButton("Laske tulokset");
+        TulosKuuntelija tulosKuuntelija = new TulosKuuntelija(laskeTulokset, tuloksetTeksti, this.kayttokerta);
+        laskeTulokset.addActionListener(tulosKuuntelija);
 
         return laskeTulokset;
     }
