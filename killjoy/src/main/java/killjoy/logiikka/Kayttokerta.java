@@ -6,6 +6,8 @@ import java.util.ArrayList;
  * Luokka pitää yllä listaa käyttökertaan liittyvistä alkoholeista ja muista
  * kuluista, ja tekee käyttökertaan liittyvät laskelmat. Luokan kautta
  * kommunikoidaan käyttöliittmän kanssa.
+ *
+ * @see killjoy.kayttoliittyma.Kayttoliittyma
  */
 public class Kayttokerta implements KayttokertaIF {
 
@@ -60,7 +62,7 @@ public class Kayttokerta implements KayttokertaIF {
      * @param vahvuus
      * @param annoskoko
      */
-    public void lisaaKertaAnnos(double hinta, int maara, double vahvuus, double annoskoko) {
+    public void lisaaKertaAnnos(double hinta, int maara, double vahvuus, double annoskoko) throws ArrayIndexOutOfBoundsException {
         this.alkoholit.add(new KertaAnnos(hinta, maara, vahvuus, annoskoko));
         this.kulut.add(new Kulu(hinta, maara) {
         });
@@ -85,7 +87,7 @@ public class Kayttokerta implements KayttokertaIF {
      * @return alkoholimäärä
      */
     public double laskeAlkoholiKayttokerrasta() {
-        double maaraYht = 0;
+        double maaraYht = 0.0;
 
         for (KertaAnnos kertaAnnos : this.alkoholit) {
             maaraYht = +kertaAnnos.laskeAlkoholi();
@@ -100,7 +102,7 @@ public class Kayttokerta implements KayttokertaIF {
      * @return kulut yhteensä
      */
     public double laskeKulut() {
-        double kulut = 0;
+        double kulut = 0.0;
 
         for (Kulu kulu : this.kulut) {
             kulut += kulu.hintaYht();
@@ -116,7 +118,7 @@ public class Kayttokerta implements KayttokertaIF {
      * @return käyttökertaan liittyvä alkoholinkulutus litroina
      */
     public double laskeAlkoholinKokonaiskulutus() {
-        double litroja = 0;
+        double litroja = 0.0;
 
         for (KertaAnnos kertaAnnos : this.alkoholit) {
             litroja = +kertaAnnos.laskeLitrat();

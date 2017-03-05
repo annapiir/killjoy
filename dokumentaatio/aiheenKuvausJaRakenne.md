@@ -32,3 +32,5 @@ Käyttökerta luo uusia alkoholiannoksia (luokka KertaAnnos) ja kuluja (abstrakt
 
 ![Käyttäjä syöttää nautitun kerta-annoksen tiedot](https://github.com/annapiir/killjoy/blob/master/dokumentaatio/sekvenssikaavio1.png)
 
+![Käyttäjä laskee tulokset](https://github.com/annapiir/killjoy/blob/master/dokumentaatio/sekvenssikaavio2.png)
+

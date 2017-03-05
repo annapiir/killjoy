@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package killjoy.kayttoliittyma;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -13,6 +7,12 @@ import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import killjoy.logiikka.KayttokertaIF;
 
+/**
+ * Luokan hoitaa muiden kulujen lisäämiseen liittyviä toimintoja.
+ *
+ * @see killjoy.kayttoliittyma.Kayttoliittyma
+ * @see killjoy.logiikka.Kayttokerta
+ */
 public class KuluKuuntelija implements ActionListener {
 
     private KayttokertaIF kayttokerta;
@@ -23,6 +23,19 @@ public class KuluKuuntelija implements ActionListener {
     private Double[] hintalista;
     private JTextArea tietoMuuKulu;
 
+    /**
+     * Konstruktori saa parametreikseen kuluihin liittyvät valikot, napin,
+     * ohjelmalogiikaa hallinnoivan käyttökerran ja tulosten esittämistä varten
+     * tuloslaatikon.
+     *
+     * @param kayttokerta
+     * @param maaraValikko
+     * @param hintaValikko
+     * @param nappi
+     * @param maaralista
+     * @param hintalista
+     * @param tietoMuuKulu
+     */
     public KuluKuuntelija(KayttokertaIF kayttokerta, JComboBox<Integer> maaraValikko, JComboBox<Double> hintaValikko, JButton nappi, Integer[] maaralista, Double[] hintalista, JTextArea tietoMuuKulu) {
         this.kayttokerta = kayttokerta;
         this.hintaValikko = hintaValikko;
@@ -42,9 +55,9 @@ public class KuluKuuntelija implements ActionListener {
 
             this.tietoMuuKulu.setText(this.kayttokerta.tulostaKulut());
         } catch (Exception exception) {
-            
+
         }
-       
+
     }
 
 }

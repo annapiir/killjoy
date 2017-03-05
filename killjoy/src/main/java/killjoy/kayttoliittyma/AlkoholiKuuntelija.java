@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package killjoy.kayttoliittyma;
 
 import java.awt.event.ActionEvent;
@@ -13,8 +8,10 @@ import javax.swing.JTextArea;
 import killjoy.logiikka.KayttokertaIF;
 
 /**
+ * Luokalla toteutetaan alhkoliannosten tallentamiseen liittyviä toimia.
  *
- * @author annapiir
+ * @see killjoy.kayttoliittyma.Kayttoliittyma
+ * @see killjoy.logiikka.Kayttokerta
  */
 public class AlkoholiKuuntelija implements ActionListener {
 
@@ -31,6 +28,24 @@ public class AlkoholiKuuntelija implements ActionListener {
     private Double[] alkoholiVahvuusLista;
     private JTextArea tietoMuuKulu;
 
+    /**
+     * Konstruktori saa parametreiksi alkoholiannoksen tallentamiseen liittyvät
+     * valikot ja listat, napin, viitteen ohjelmalogiikkaa hallinnoivaan
+     * käyttökertaan sekä tulosten esittämistä varten tuloslaatikon.
+     *
+     * @param kayttokerta
+     * @param maaraValikko
+     * @param kokoValikko
+     * @param vahvuusValikko
+     * @param hintaValikko
+     * @param lisaaAlkoholi
+     * @param tietoAlkoholi
+     * @param maaraLista
+     * @param hintaLista
+     * @param alkoholiKokoLista
+     * @param alkoholiVahvuusLista
+     * @param tietoMuuKulu
+     */
     AlkoholiKuuntelija(KayttokertaIF kayttokerta, JComboBox<Integer> maaraValikko, JComboBox<Double> kokoValikko, JComboBox<Double> vahvuusValikko, JComboBox<Double> hintaValikko, JButton lisaaAlkoholi, JTextArea tietoAlkoholi, Integer[] maaraLista, Double[] hintaLista, Double[] alkoholiKokoLista, Double[] alkoholiVahvuusLista, JTextArea tietoMuuKulu) {
         this.kayttokerta = kayttokerta;
         this.maaraValikko = maaraValikko;
@@ -58,9 +73,8 @@ public class AlkoholiKuuntelija implements ActionListener {
             this.tietoAlkoholi.setText(this.kayttokerta.tulostaAlkoholit());
             this.tietoMuuKulu.setText(this.kayttokerta.tulostaKulut());
         } catch (Exception exception) {
-            
+
         }
-        
 
     }
 

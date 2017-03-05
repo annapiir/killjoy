@@ -34,10 +34,99 @@ public class KayttokertaTest {
     public void konstruktoriAsettaaPvmnOikein() {
         Kayttokerta kerta = new Kayttokerta();
         kerta.setPvm("24.01.2017");
-        String vastaus = kerta.toString();
+        String vastaus = kerta.getPvm();
          
-        assertEquals("Illan 24.01.2017 saldo:\nei alkoholia eikä muita kuluja\nPuhdasta alkoholia joit 0.0l\nKaikkiaan kuluja koitui 0.0 euroa", vastaus);
+        assertEquals("24.01.2017", vastaus);
     }
+    
+    @Test
+    public void lisaaKertaAnnosLisaaAlkoholin() {
+        Kayttokerta kerta = new Kayttokerta();
+        kerta.lisaaKertaAnnos(1.0, 1, 4.7, 0.33);
+        
+        String vastaus = kerta.tulostaAlkoholit();
+        
+        assertEquals("Nautittu alkoholi:\n - 4.7% vahvuista alkoholia, hinta 1.0e/0.33l, 1 kpl\n\n", vastaus);
+    }
+    
+    @Test
+    public void lisaaKertaAnnosLisaaKulun() {
+        Kayttokerta kerta = new Kayttokerta();
+        kerta.lisaaKertaAnnos(1.0, 1, 4.7, 0.33);
+        
+        String vastaus = kerta.tulostaKulut();
+        
+        assertEquals("Kulut:\n - 1 x 1.0 euroa = 1.0 euroa\n", vastaus);
+    }
+    
+    @Test 
+    public void lisaaMuuKuluLisaaKulun() {
+        Kayttokerta kerta = new Kayttokerta();
+        kerta.lisaaMuuKulu(6.5, 2);
+        
+        String vastaus = kerta.tulostaKulut();
+        
+        assertEquals("Kulut:\n - 2 x 6.5 euroa = 13.0 euroa\n", vastaus);
+    }
+    
+    @Test
+    public void laskeAlkoholiKayttokerrastaLaskeeOikein() {
+        Kayttokerta kerta = new Kayttokerta();
+        kerta.lisaaKertaAnnos(1.0, 1, 4.7, 0.33);
+        
+        Double vastaus = kerta.laskeAlkoholiKayttokerrasta();
+        
+        assertEquals(0.01551, vastaus, 0.0001);
+    }
+    
+    @Test 
+    public void laskeAlkoholiKayttokerrastaPalauttaaTyhjalleNolla() {
+        Kayttokerta kerta = new Kayttokerta();
+        
+        Double vastaus = kerta.laskeAlkoholiKayttokerrasta();
+        
+         assertEquals(0.0, vastaus, 0.0);
+
+    }
+    
+    @Test
+    public void laskeKulutLaskeeKulutOikein() {
+        Kayttokerta kerta = new Kayttokerta();
+        kerta.lisaaMuuKulu(6.5, 2);
+        
+        Double vastaus = kerta.laskeKulut();
+        
+        assertEquals(13.0, vastaus, 0.0);
+    }
+    
+    @Test
+    public void laskeKulutPalauttaaTyhjalleNolla() {
+        Kayttokerta kerta = new Kayttokerta();
+        
+        Double vastaus = kerta.laskeKulut();
+        
+        assertEquals(0.0, vastaus, 0.0);
+    }
+    
+    @Test
+    public void alkoholinKokonaiskulutusLasketaanOikein() {
+        Kayttokerta kerta = new Kayttokerta();
+        kerta.lisaaKertaAnnos(1.0, 3, 4.7, 0.33);
+        
+        Double vastaus = kerta.laskeAlkoholinKokonaiskulutus();
+        
+        assertEquals(1, vastaus, 0.1);
+    }
+    
+    @Test
+    public void laskeAlkoholinKokonaiskulutusPalauttaaNollaTyhjalle() {
+        Kayttokerta kerta = new Kayttokerta();
+        
+        Double vastaus = kerta.laskeAlkoholinKokonaiskulutus();
+        
+        assertEquals(0.0, vastaus, 0.0);
+    }
+    
 
     
     

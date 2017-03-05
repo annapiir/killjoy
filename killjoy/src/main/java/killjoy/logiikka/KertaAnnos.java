@@ -19,7 +19,6 @@ public class KertaAnnos extends Kulu {
      *
      * @param hinta
      * @param maara
-     * @param nimi
      * @param vahvuus
      * @param annosKoko
      */
