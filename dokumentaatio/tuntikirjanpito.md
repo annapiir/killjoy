@@ -18,6 +18,8 @@ Päivä | Tunnit | Kuvaus
 17.02.2017 | 3h | Dokumentoinnin päivitystä, refaktorointia koodikatselmointipalautteen perusteella, käyttöliittymän tekemistä
 22.02.2017 | 3h | Käyttöliittymän kanssa ahertamista
 24.02.2017 | 4h | Käyttöliittymän ja dokumentaation viilaamista
+27.02.2017 | 2h | Bugien hiomista
+05.03.2017 | 3h | Testien lisäys, JavaDocin päivitys, lopputoimet 
  
 
 

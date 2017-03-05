@@ -53,6 +53,11 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+            </plugin> 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
                 <version>2.5</version>
             </plugin>
@@ -69,7 +74,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>fi.annapiir.killjoy.killjoy.Main</mainClass>
+                                    <mainClass>killjoy.killjoy.Main</mainClass>
                                     <!-- mainClass on muotoa "fi.omanimi.superprojekti.Main" -->
                                 </transformer>
                             </transformers>

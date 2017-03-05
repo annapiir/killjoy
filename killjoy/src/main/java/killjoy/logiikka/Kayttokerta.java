@@ -61,6 +61,8 @@ public class Kayttokerta implements KayttokertaIF {
      * @param maara
      * @param vahvuus
      * @param annoskoko
+     * 
+     * @throws ArrayIndexOutOfBoundsException
      */
     public void lisaaKertaAnnos(double hinta, int maara, double vahvuus, double annoskoko) throws ArrayIndexOutOfBoundsException {
         this.alkoholit.add(new KertaAnnos(hinta, maara, vahvuus, annoskoko));
@@ -74,6 +76,8 @@ public class Kayttokerta implements KayttokertaIF {
      *
      * @param hinta
      * @param maara
+     * 
+     * @throws ArrayIndexOutOfBoundsException
      */
     public void lisaaMuuKulu(double hinta, int maara) throws ArrayIndexOutOfBoundsException {
         this.kulut.add(new Kulu(hinta, maara) {
